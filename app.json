@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/worktimelist/worktimelist",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/setting/setting",
+    "pages/worktimeadd/worktimeadd",
+    "pages/manhourdetail/manhourdetail",
+    "pages/error/pagenotfound/error404",
+    "pages/template/item/item"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#28a564",
+    "navigationBarTitleText": "致成电子",
+    "navigationBarTextStyle": "dark",
+    "backgroundColor": "#fbfbfb"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 30000,
+    "uploadFile": 30000,
+    "downloadFile": 30000
+  },
+  "debug": true
+}

@@ -1,0 +1,35 @@
+<import src="../template/item/item.wxml" />
+<scroll-view class='page .text_s'>
+  <form bindsubmit='formSubmit'>
+    <view class='content'>
+      <view class='page_top'>
+        <view class='top_item'>
+          <view class='picker'>年份：{{Manhour.PERIODYEAR}}</view>
+        </view>
+        <view class='top_item2'>
+          <view class='picker' >周次：{{Manhour.PERIODWEEK}}</view>
+        </view>
+           <view class='top_item2'>
+          <view class='picker' >工时合计：{{Manhour.GSHJ}}</view>
+        </view>
+      </view>
+  <!-- <zan-cell-group>
+      <zan-cell title="年份" is-link><view  slot="footer">{{YearData[YearIndex].PERIODCODE}}</view></zan-cell>
+   <zan-cell title="周次" is-link><view  slot="footer" class='picker' >{{WeekData[WeekTimeIndex]}}</view></zan-cell>
+    <zan-cell title="开始时间"> <view slot="footer" >{{WeekBeginData[WeekTimeIndex]}}</view></zan-cell>
+     <zan-cell title="结束时间"><view slot="footer" >{{WeekEndData[WeekTimeIndex]}}</view></zan-cell>
+    </zan-cell-group> -->
+
+      <title style='display:flex;'>
+        <view class='item_content top_item' value='{{WeekBeginData[WeekTimeIndex]}}' name='WEEK_BEGINDATE'>开始时间：{{Manhour.WEEK_BEGINDATE}}</view>
+        <view class='item_content top_item2' value='{{WeekEndData[WeekTimeIndex]}}' name='WEEK_ENDDATE'>结束时间：{{Manhour.WEEK_ENDDATE}}</view>
+      </title>
+    </view>
+    <view class='content list_content'>
+      <!-- 工时列表  -->
+      <view class='list' wx:for="{{TaskDatas}}" wx:key="*this" wx:for-index="idx">
+        <template is="manhour_detail_item" data="{{item}}"></template>
+      </view>
+    </view>
+  </form>
+</scroll-view>

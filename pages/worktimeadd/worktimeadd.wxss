@@ -1,0 +1,171 @@
+.page{
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  /* background: white; */
+}
+
+.content{
+  margin: 10px;
+}
+.page_top{
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  /* justify-content: space-around; */
+}
+
+.item_content{
+  font-size: 12px;
+}
+.top_item{
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  text-align: left
+}
+.top_item2{
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.list{
+  width: 100%;
+}
+.list_content{
+  margin-bottom: 50px;
+}
+.picker{
+  /* width: 100%; */
+  font-size: 12px;
+}
+.weui-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f5f6f5;
+  text-align: center;
+  font-size: 12pt;
+  color: #fff;
+}
+
+.list-box{
+    padding: 30rpx 20rpx;
+}
+
+.text_task_time{
+  width: 14%;
+  justify-content: center;
+  align-items: center
+}
+.newest-list{
+    display: inline-block;
+    width: 100%;
+    /* height: 347rpx; */
+    margin:0 10rpx 10rpx 0;
+    border-radius: 5px;
+    /* text-align: center; */
+    /* background: #f5f6f5; */
+    background: #fff;
+}
+.deletview{
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center
+}
+.task_discrible{
+  height:50%;
+  text-align: left;
+  padding: 10px;
+  margin-top: 10px;
+}
+.cityheader {
+  position: absolute;
+  top:0px;
+  width: 100%;
+  z-index: 4;
+}
+.citypickers{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  opacity: 1;
+  background-color: #fff;
+  z-index: 10;
+  display: none;
+}
+
+.citybody {
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.cityheader {
+  position: absolute;
+  top:0px;
+  width: 100%;
+  z-index: 10;
+  opacity: 1;
+}
+
+.city-cancel {
+  float: left;
+  margin: 20rpx;
+  color: #818181;
+}
+
+.city-true {
+  float: right;
+  margin: 20rpx;
+  color: #2FB42E
+}
+
+.section .picker {
+  background-color: #fff;
+  border-bottom: 1px #d9d9d9 solid;
+  border-top: 1px #d9d9d9 solid;
+   padding: 20rpx; 
+}
+
+/* 支付密码框 */
+
+.inputview {
+  /* margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #cfd4d3; */
+
+
+    width: 80%;
+  height: 27px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #cfd4d3;
+  justify-content: center;
+  align-items: center
+}
+.boder{
+  border: 1px solid #cfd4d3;
+}
+
+.week {
+  width: 12%;
+}
+
+.week_data {
+  width: 80%;
+  height: 27px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #cfd4d3;
+  justify-content: center;
+  align-items: center
+}

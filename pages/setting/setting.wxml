@@ -1,0 +1,17 @@
+<!--pages/setting/setting.wxml-->
+<view class='contanier'>
+  <view class="userinfo global_background">
+
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+
+     <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="text_m text_color_white">{{userInfo.nickName}}</text>
+    </block> 
+
+  </view>
+
+   <view class="zan-panel" style='margin-top:670rpx'> 
+    <button class="zan-btn zan-btn--large" bindtap='loginout'>退出登录</button>
+   </view> 
+</view>

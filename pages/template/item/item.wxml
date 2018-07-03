@@ -1,0 +1,67 @@
+<template name="manhour_detail_item">
+  <view class="item_manhour_detail ">
+  <view style='margin:5px;'> 
+    <view style='display:flex;'>
+      <view style='display:flex;margin-top: 5px;'>
+        <view>项目名称：</view>
+        <view class='boder'>{{item.PROJECT_NAME}}</view>
+      </view>
+      <view style='display:flex;justify-content: flex-start;margin-top: 5px;margin-left: 5%;'>
+        <view>工作任务：</view>
+        <view class='boder'>{{item.TASKPKG_NAME}}</view>
+      </view>
+    </view>
+    <view style='display:flex;margin-top: 5px;'>
+      <view style='display:flex;justify-content: flex-start'>
+        <view>状态：</view>
+        <view  class='boder' wx:if="{{item.TASK_STATUS=='0'}}">未开始</view>
+        <view  class='boder' wx:elif="{{item.TASK_STATUS=='1'}}">进行中</view>
+        <view  class='boder' wx:else="{{item.TASK_STATUS=='2'}}">已完成</view>
+      </view>
+      <view style='display:flex;justify-content: flex-start'>
+        <view></view>
+        <view></view>
+      </view>
+    </view>
+    <view style='display:flex;width:100%;text-align: center;'>
+      <view class='week'>
+        <view>星期</view>
+        <view></view>
+      </view>
+      <view class='week'>
+        <view>一</view>
+        <view class='week_data'>{{item.MON_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>二</view>
+        <view class='week_data'>{{item.TUE_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>三</view>
+        <view class='week_data'>{{item.WED_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>四</view>
+        <view class='week_data'>{{item.THU_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>五</view>
+        <view class='week_data'>{{item.FRI_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>六</view>
+        <view class='week_data'>{{item.SAT_HOUR}}</view>
+      </view>
+      <view class='week'>
+        <view>日</view>
+        <view class='week_data'>{{item.SUN_HOUR}}</view>
+      </view>
+    </view>
+  
+    <view style='justify-content: flex-start'>
+      <view>任务名称：</view>
+      <view class='boder'>{{item.TASK_NAME}}</view>
+    </view>
+    </view>
+  </view>
+</template>

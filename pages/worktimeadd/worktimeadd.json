@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "zan-cell": "../../ui/zanui/cell/index",
+    "zan-icon": "../../ui/zanui/icon/index",
+    "zan-badge": "../../ui/zanui/badge/index",
+    "zan-panel": "../../ui/zanui/panel/index",
+    "zan-cell-group": "../../ui/zanui/cell-group/index"
+  }
+}

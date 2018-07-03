@@ -1,0 +1,35 @@
+@import '../template/item/item.wxss';
+.page{
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  /* background: white; */
+}
+
+.content{
+  margin: 10px;
+}
+.page_top{
+  display: flex;
+  width: 100%;
+  /* justify-content: space-around; */
+}
+
+.item_content{
+  font-size: 12px;
+}
+.top_item{
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  text-align: left
+}
+.top_item2{
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.boder{
+  border: 1px solid #cfd4d3;
+}

@@ -1,0 +1,6 @@
+<!--pages/error/pagenotfound/error404.wxml-->
+<view class='container'>
+  <image class='errorimg' mode='widthFix' src='/images/emptyimg.png'></image>
+  <view class="text_color_black text_m " bindtap='jumpToIndex'>页面找不到</view>
+  <view class="text_color_gray text_s" bindtap='jumpToIndex'>快去首页瞧瞧吧</view>
+</view>

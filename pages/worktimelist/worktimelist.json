@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "工时",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "zan-tag": "../../ui/zanui/tag/index"
+  }
+}

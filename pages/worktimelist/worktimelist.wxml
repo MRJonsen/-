@@ -1,0 +1,51 @@
+<view class="container">
+  <scroll-view class='main' scroll-y="true" bindscrolltoupper="onPullDownRefresh" bindscrolltolower="onReachBottom">
+    <view wx:for='{{work_time_list}}' wx:for-item='manhour' wx:key='{{index}}'>
+      <view style='height:230rpx;background:white' data-index="{{index}}" data-item='{{manhour}}'>
+        <view style='height:185rpx;display:flex;flex-direction: row;'>
+          <view style='height:100%;width:180rpx;display: flex;flex-direction: row;justify-content: center;'>
+            <view style='radius:50%;background:{{color[index%3]}};width:85rpx;height:85rpx;border-radius:50%;justify-content: center;align-items: center;display:flex;margin-top:20rpx'>
+              <text style='color:white;font-size:11px'>{{manhour.PERIODWEEK}}周</text>
+            </view>
+          </view>
+          <view style='width:500rpx;background:white;padding-top:20rpx;padding-bottom:20rpx'>
+            <view style='height:33%;'>
+              <view class='text_s' wx:if="{{manhour.STATUS==0}}">
+               <zan-tag type="warn" plain>新建</zan-tag></view>
+              <view class='text_s' wx:elif="{{manhour.STATUS==1}}">
+              <zan-tag type="primary" plain >已提交</zan-tag></view>
+              <view class='text_s' wx:elif="{{manhour.STATUS==4}}">
+              <zan-tag type="danger" plain>退回</zan-tag></view>
+               <view class='text_s' wx:else> <zan-tag type="primary" plain>已完成</zan-tag></view> 
+            </view>
+            <view style='height:33%;display:flex;flex-direction: row;'>
+              <view class='text_s text_color_gray'>{{manhour.WEEK_BEGINDATE}}</view>
+              <view class='text_s text_color_gray' style='padding-left:5rpx;padding-right:5rpx'>~</view>
+              <view class='text_s text_color_gray'>{{manhour.WEEK_ENDDATE}}</view>
+            </view>
+            <view style='height:33%;display:flex;flex-direction: row;'>
+              <view class='text_m text_color_black' style='padding-right:10rpx'>本周工时合计：</view>
+              <view class='text_m text_color_gray'>{{manhour.GSHJ}}</view>
+            </view>
+          </view>
+          <view style='width:70rpx;display:flex;margin-top:30rpx;display: flex;flex-direction: row;justify-content: center;'>
+            <image style='width:40rpx;height:40rpx' mode='aspectFit' src='/images/more_function.png' bindtap='statusOperation' data-index="{{index}}" data-manhour='{{manhour}}' wx:if="{{manhour.STATUS==0}}"> </image>
+          </view>
+        </view>
+
+        <view style='height:50rpx;background:rgba(240,246,250,0.7);display: flex;flex-direction: row;justify-content: center; align-items:center ' bindtap='bindDetail' data-index='{{index}}' data-item='{{manhour}}'>
+          <text class='text_s text_color_gray'>立即查看</text>
+        </view>
+      </view>
+      <!--分割线  -->
+       <view style='height:10rpx'></view> 
+
+    </view>
+    <view class="weui-form-preview__ft" wx:if="{{manhour.STATUS==0}}">
+      <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">删除</navigator>
+      <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">提交</navigator>
+    </view>
+
+    <!-- <button class="weui-btn" bindtap='WorkTimeAdd'>工时填报</button> -->
+  </scroll-view>
+</view>

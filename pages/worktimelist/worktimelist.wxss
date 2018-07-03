@@ -1,0 +1,59 @@
+/* pages/worktimelist/worktimelist.wxss */
+
+.weui-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #47a86c;
+  border-radius: 0rpx;
+  text-align: center;
+  font-size: 12pt;
+  color: #fff;
+}
+
+/*main*/
+.main {
+  /* margin-top: 10px; */
+  /* margin-bottom: 46px; */
+  height: 100%;
+}
+
+
+.item_title{
+  width: 33%;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 11px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.item_content{
+  font-size: 12px;
+}
+
+.film {
+  display: flex;
+  padding: 10px 10px;
+  background-color: #fff;
+
+}
+.film_left{
+  width: 75%;
+
+}
+.film_right{
+  display: -webkit-flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 11pt;
+  width: 20%;
+}
+.line{
+  width: 1px;
+  background-color: #ccc;
+  margin-top: 0px;
+}
+
+
+
+

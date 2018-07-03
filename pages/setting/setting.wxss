@@ -1,0 +1,24 @@
+/* pages/setting/setting.wxss */
+.weui-btn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #FCFCFC;
+  border-radius: 0rpx;
+  text-align: center;
+}
+.userinfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 400rpx;
+  justify-content: center;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+

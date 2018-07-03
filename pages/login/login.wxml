@@ -1,0 +1,32 @@
+<view class="container global_background">
+  <block >
+    <image class="title" src="/images/more/123456.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="logo" src="{{userInfo.avatarUrl}}"></image>
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <view class="login-from">
+          <!--账号-->
+          <view class="inputView">
+            <image class="nameImage" src="../../images/name.png"></image>
+            <label class="loginLab">账号</label>
+            <input class="inputText" placeholder="请输入账号" value='{{account}}' bindinput="phoneInput" />
+          </view>
+          <!--密码-->
+          <view class="inputView">
+            <image class="keyImage" src="../../images/key.png"></image>
+            <label class="loginLab">密码</label>
+            <input class="inputText" password="true" placeholder="请输入密码" value='{{password}}' bindinput="passwordInput"/>
+          </view>
+        </view>
+        <view class="confirm-btn global_background" bindtap='login'>
+          <text>登录</text>
+        </view>
+        <text class="copyright">@杭州致成电子科技</text>
+      </view>
+    </view>
+  </block>
+</view>

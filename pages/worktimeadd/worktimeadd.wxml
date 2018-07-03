@@ -1,0 +1,141 @@
+<scroll-view class='page .text_s'>
+  <form bindsubmit='formSubmit'>
+     <zan-cell-group>
+      <zan-cell title="年份" is-link><picker  slot="footer" class='picker' bindchange='bindYearPickerChange' value="{{YearData[YearIndex].PERIODCODE}}" range="{{YearData}}" range-key='PERIODCODE' name='PERIODYEAR'>{{YearData[YearIndex].PERIODCODE}}</picker></zan-cell>
+   <zan-cell title="周次" is-link><picker  slot="footer" class='picker' bindchange='bindWeekPickerChange' value="{{WeekData[WeekTimeIndex]}}" range="{{WeekData}}" name='PERIODWEEK'>{{WeekData[WeekTimeIndex]}}</picker></zan-cell>
+    <zan-cell title="开始时间"> <picker slot="footer" value='{{WeekBeginData[WeekTimeIndex]}}' name='WEEK_BEGINDATE' >{{WeekBeginData[WeekTimeIndex]}}</picker></zan-cell>
+     <zan-cell title="结束时间"><picker slot="footer" value='{{WeekEndData[WeekTimeIndex]}}' name='WEEK_ENDDATE'>{{WeekEndData[WeekTimeIndex]}}</picker></zan-cell>
+    </zan-cell-group>
+    <!-- <view class='content'>
+      <view class='page_top'>
+        <view class='top_item'>
+          <view style='display:flex;'>
+            <picker class='picker' bindchange='bindYearPickerChange' value="{{YearData[YearIndex].PERIODCODE}}" range="{{YearData}}" range-key='PERIODCODE' name='PERIODYEAR'>年份：{{YearData[YearIndex].PERIODCODE}}</picker>
+          </view>
+        </view>
+         <view class='top_item2'>
+          <picker class='picker' bindchange='bindWeekPickerChange' value="{{WeekData[WeekTimeIndex]}}" range="{{WeekData}}" name='PERIODWEEK'>周次：{{WeekData[WeekTimeIndex]}}</picker>
+        </view>
+      </view>
+
+      <title style='display:flex;'>
+        <picker class='item_content top_item' value='{{WeekBeginData[WeekTimeIndex]}}' name='WEEK_BEGINDATE' >开始时间：{{WeekBeginData[WeekTimeIndex]}}</picker>
+        <picker  class='item_content top_item2' value='{{WeekEndData[WeekTimeIndex]}}' name='WEEK_ENDDATE'>结束时间：{{WeekEndData[WeekTimeIndex]}}</picker>
+      </title>
+    </view> -->
+    <view class='content list_content'>
+
+      <!-- 工时列表  -->
+      <view class='list' wx:for="{{ManHourList}}" wx:key="*this" wx:for-item='manhour' wx:for-index="idx">
+        <view class='deletview' bindtap='deleteManHour' data-index='{{idx}}' style='float:right'>×</view>
+        <view class="newest-list">
+          <view style='margin:5px'>
+            <view style='display:flex;'>
+              <view style='display:flex;margin-top: 5px;'>
+                <view>项目名称：</view>
+                <view class='boder' bindtap='openThree' data-index='{{idx}}'>
+                  <view data-index='{{idx}}' wx:if="{{taskChoiceData[idx][0]==-1}}">请选择</view>
+                  <view data-index='{{idx}}' wx:else>
+                    {{taskData[taskChoiceData[idx][0]].PROJECT_NAME}}
+                  </view>
+                </view>
+              </view>
+              <view style='display:flex;justify-content: flex-start;margin-top: 5px;margin-left: 5%;'>
+                <view>工作任务：</view>
+                <view class='picker boder' bindtap='openThree' data-index='{{idx}}'>
+                  <view data-index='{{idx}}' wx:if="{{taskChoiceData[idx][2]==-1}}">请选择</view>
+                  <view data-index='{{idx}}' wx:else>
+                    {{taskData[taskChoiceData[idx][0]].phaseEntities[taskChoiceData[idx][1]].projectTaskEntities[taskChoiceData[idx][2]].TASKPKG_NAME}}</view>
+                </view>
+              </view>
+            </view>
+             <view style='display:flex;margin-top: 5px;'>
+              <view style='display:flex;justify-content: flex-start'>
+                <view>状态：</view>
+                <picker class='picker boder' value='{{taskStatus[idx]}}' data-pj_index='{{idx}}' bindchange='taskStatusChange' range="{{taskstatus}}" name='task_status{{idx}}'>{{taskstatus[taskStatus[idx]]}}</picker>
+              </view>
+              <view style='display:flex;justify-content: flex-start'>
+                <view></view>
+                <view></view>
+              </view>
+            </view>
+            <view style='display:flex;width:100%;text-align: center;'>
+              <view class='week'>
+                <view>星期</view>
+                <view></view>
+              </view>
+              <view class='week'>
+                <view>一</view>
+                <input class='week_data'type="digit" name='{{idx}}day1' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>二</view>
+                <input class='week_data' type="digit" name='{{idx}}day2' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>三</view>
+                <input class='week_data'type="digit" name='{{idx}}day3' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>四</view>
+                <input class='week_data'type="digit" name='{{idx}}day4' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>五</view>
+                <input class='week_data'type="digit" name='{{idx}}day5' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>六</view>
+                <input class='week_data'type="digit" name='{{idx}}day6' value="0"></input>
+              </view>
+              <view class='week'>
+                <view>日</view>
+                <input class='week_data' type="digit" name='{{idx}}day7' value="0"></input>
+              </view>
+            </view>
+          
+           
+            <!--  -->
+            <!-- <view style='display:flex'>
+              <view class='top_item'>
+                <view class='picker' bindtap='openThree' data-index='{{idx}}'>
+                  项目：{{taskData[taskChoiceData[idx][0]].PROJECT_NAME}} 任务名称：{{taskData[taskChoiceData[idx][0]].phaseEntities[taskChoiceData[idx][1]].projectTaskEntities[taskChoiceData[idx][2]].TASKPKG_NAME}}
+                </view>
+              </view>
+              <view class='top_item2'>
+                <picker class='picker' value='{{taskStatus[idx]}}' data-pj_index='{{idx}}' bindchange='taskStatusChange' range="{{taskstatus}}" name='task_status{{idx}}'>状态：{{taskstatus[taskStatus[idx]]}}</picker>
+              </view>
+            </view> -->
+            <view style='justify-content: flex-start'>
+              <view>任务名称：</view>
+              <input class=' boder' bindblur='textInput' placeholder="任务说明" name='TASK_NAME{{idx}}'></input>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-form-preview__ft .weui-btn" style='position: fixed;background-color: #fff; z-index: 10;opacity: 1;background-color: #fff;'>
+      <button class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active" bindtap='addManHour'>添加工作任务</button>
+      <button class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" form-type='submit'>保存</button>
+    </view>
+  </form>
+  <!--三级选择-->
+  <view class="citypicker" wx:if='{{condition}}'>
+    <picker-view class='citybody' indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindTreeChange" wx:key="">
+      <view class="cityheader">
+        <view bindtap="openThree" class="city-cancel">取消</view>
+        <view bindtap="saveThree" class="city-true">确定</view>
+      </view>
+      <picker-view-column>
+        <view wx:for="{{one}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.PROJECT_NAME}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{two}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.PHASE_NAME}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{three}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.TASKPKG_NAME}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</scroll-view>
