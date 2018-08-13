@@ -1,14 +1,37 @@
-//logs.js
-const util = require('../../utils/util.js')
 Page({
   data: {
-    logs: []
+    dataModel:{name:"",input:""},
+    lists: [],
   },
-  onLoad: function () {
+  addList: function () {
+    var lists = this.data.lists;
+    var newData = this.data.dataModel;
+    lists.push(newData);//实质是添加lists数组内容，使for循环多一次
     this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
+      lists: lists,
+    })
+  },
+  delList: function () {
+    var lists = this.data.lists;
+    lists.pop();      //实质是删除lists数组内容，使for循环少一次
+    this.setData({
+      lists: lists,
+    })
+  },
+  bindKeyInput:function(e){
+      console.log(e)
+      var data = this.data.lists[e.currentTarget.id];
+      data.input = e.detail.value;
+      this.setData({
+        lists: this.data.lists
       })
+  },
+  bindKeyInput2: function (e) {
+    console.log(e)
+    var data = this.data.lists[e.currentTarget.id];
+    data.name = e.detail.value;
+    this.setData({
+        lists: this.data.lists
     })
   }
 })

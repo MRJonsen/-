@@ -1,9 +1,11 @@
 {
   "pages": [
+   
     "pages/login/login",
+    "pages/workhour/workhour",
+    "pages/logs/logs",
     "pages/worktimelist/worktimelist",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/setting/setting",
     "pages/worktimeadd/worktimeadd",
     "pages/manhourdetail/manhourdetail",

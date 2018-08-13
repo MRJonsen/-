@@ -19,7 +19,7 @@
         <view class="weui-grids">
             <block wx:for="{{gridList}}" wx:for-item="gridItem" wx:for-index="gridIndex" wx:key="grid">
                 <navigator url="{{gridItem.url}}" class="weui-grid" hover-class="weui-grid_active">
-                    <image class="weui-grid__icon" src="../../images/icon_tabbar.png" />
+                    <image class="weui-grid__icon" src="{{gridItem.enName}}" />
                     <view class="weui-grid__label">{{gridItem.zhName}}</view>
                 </navigator>
             </block>

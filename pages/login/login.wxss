@@ -235,7 +235,7 @@
 .inputView {
   /* display: flex; */
   background: white;
-  line-height: 44px;
+  line-height: 90rpx;
   align-items: center;
   border-bottom: 1rpx solid #ededed;
 }
@@ -243,13 +243,12 @@
 /*输入框*/
 .nameImage, .keyImage {
   margin-left: 22px;
-  width: 14px;
-  height: 14px;
-
+  width: 15px;
+  height: 15px;
 }
 
 .loginLab {
-  margin: 15px 15px 5px 10px; 
+  margin: 20rpx ; 
   color: #545454;
   font-size: 13px;
 }
@@ -258,10 +257,11 @@
   flex: block;
   float: right; 
   text-align: left;
-  height: 100%;
+  height: 70rpx;
   width: 65%;
-  background: #fff;
-  margin-right: 22px;
-  margin-top: 11px;
-  font-size: 12px;
+  /* background: pink; */
+   background: #fff; 
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+  font-size: 13px;
 }

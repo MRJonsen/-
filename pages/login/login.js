@@ -1,8 +1,10 @@
-// pages/login/login.js
+// pages/login/login.j
 const uiutil = require('../../utils/UiUtils.js')
 const httputil = require('../../utils/HttpUtils.js')
 const stringutil = require('../../utils/String.js')
 const app = getApp();
+
+
 Page({
   /**
    * 页面的初始数据
@@ -33,9 +35,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -83,6 +83,7 @@ Page({
     })
   },
   passwordInput: function (e) {
+    console.log(e)
     this.setData({
       password: e.detail.value
     })

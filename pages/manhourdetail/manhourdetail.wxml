@@ -2,28 +2,51 @@
 <scroll-view class='page .text_s'>
   <form bindsubmit='formSubmit'>
     <view class='content'>
-      <view class='page_top'>
+      <!-- <view class='page_top'>
         <view class='top_item'>
           <view class='picker'>年份：{{Manhour.PERIODYEAR}}</view>
         </view>
         <view class='top_item2'>
-          <view class='picker' >周次：{{Manhour.PERIODWEEK}}</view>
+          <view class='picker'>周次：{{Manhour.PERIODWEEK}}</view>
         </view>
-           <view class='top_item2'>
-          <view class='picker' >工时合计：{{Manhour.GSHJ}}</view>
+        <view class='top_item2'>
+          <view class='picker'>工时合计：{{Manhour.GSHJ}}</view>
         </view>
-      </view>
-  <!-- <zan-cell-group>
-      <zan-cell title="年份" is-link><view  slot="footer">{{YearData[YearIndex].PERIODCODE}}</view></zan-cell>
-   <zan-cell title="周次" is-link><view  slot="footer" class='picker' >{{WeekData[WeekTimeIndex]}}</view></zan-cell>
-    <zan-cell title="开始时间"> <view slot="footer" >{{WeekBeginData[WeekTimeIndex]}}</view></zan-cell>
-     <zan-cell title="结束时间"><view slot="footer" >{{WeekEndData[WeekTimeIndex]}}</view></zan-cell>
-    </zan-cell-group> -->
-
-      <title style='display:flex;'>
+      </view> -->
+      <!-- <title style='display:flex;'>
         <view class='item_content top_item' value='{{WeekBeginData[WeekTimeIndex]}}' name='WEEK_BEGINDATE'>开始时间：{{Manhour.WEEK_BEGINDATE}}</view>
         <view class='item_content top_item2' value='{{WeekEndData[WeekTimeIndex]}}' name='WEEK_ENDDATE'>结束时间：{{Manhour.WEEK_ENDDATE}}</view>
-      </title>
+      </title> -->
+      <zan-cell-group>
+        <view style='display:flex; flex-direction: row;'>
+          <view style='width:50%'>
+            <zan-cell title="年份">
+              <view slot="footer" class='.text_s'>{{Manhour.PERIODYEAR}}</view>
+            </zan-cell>
+          </view>
+          <view style='width:50%'>
+            <zan-cell title="周次">
+              <view slot="footer" class='picker .text_s'>{{Manhour.PERIODWEEK}}</view>
+            </zan-cell>
+          </view>
+        </view>
+
+
+        <zan-cell title="时间">
+          <view style='display:flex; flex-direction: row;' slot="footer">
+            <view slot="footer" class='.text_s'>{{Manhour.WEEK_BEGINDATE}}</view>
+              <view>~</view>
+            <view slot="footer" class='.text_s'>{{Manhour.WEEK_ENDDATE}}</view>
+          </view>
+
+        </zan-cell>
+        <!-- <zan-cell title="结束时间">
+          <view slot="footer" class='.text_s'>{{Manhour.WEEK_ENDDATE}}</view>
+        </zan-cell> -->
+        <zan-cell title="工时合计：">
+          <view slot="footer" class='picker .text_s'>{{Manhour.GSHJ}}</view>
+        </zan-cell>
+      </zan-cell-group>
     </view>
     <view class='content list_content'>
       <!-- 工时列表  -->

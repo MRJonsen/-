@@ -1,45 +1,61 @@
-.page{
+.page {
   flex: 1;
   height: 100%;
   width: 100%;
   /* background: white; */
 }
 
-.content{
+.content {
   margin: 10px;
 }
-.page_top{
+
+.page_top {
   display: flex;
   width: 100%;
   font-size: 14px;
   /* justify-content: space-around; */
 }
 
-.item_content{
+.item_content {
   font-size: 12px;
 }
-.top_item{
+
+.top_item {
   display: flex;
   width: 50%;
   justify-content: flex-start;
-  text-align: left
+  text-align: left;
 }
-.top_item2{
+
+.top_item2 {
   display: flex;
   width: 50%;
   justify-content: center;
 }
 
-.list{
+.list {
   width: 100%;
 }
-.list_content{
+
+.list_content {
   margin-bottom: 50px;
 }
-.picker{
-  /* width: 100%; */
+
+.half_window {
+   width: 450rpx; 
+
+}
+
+.half_window_2 {
+   width: 200rpx; 
+
+}
+
+.picker {
+  /* width: 100%;  */
   font-size: 12px;
 }
+
 .weui-btn {
   position: fixed;
   bottom: 0;
@@ -50,44 +66,50 @@
   color: #fff;
 }
 
-.list-box{
-    padding: 30rpx 20rpx;
+.list-box {
+  padding: 30rpx 20rpx;
 }
 
-.text_task_time{
+.text_task_time {
   width: 14%;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.newest-list{
-    display: inline-block;
-    width: 100%;
-    /* height: 347rpx; */
-    margin:0 10rpx 10rpx 0;
-    border-radius: 5px;
-    /* text-align: center; */
-    /* background: #f5f6f5; */
-    background: #fff;
+
+.newest-list {
+  display: inline-block;
+  width: 100%;
+  /* height: 347rpx; */
+  margin: 0 10rpx 10rpx 0;
+  /* border-radius: 5px; *//* text-align: center; *//* background: #f5f6f5; */
+  background: #fff;
 }
-.deletview{
+
+.deletview {
   width: 30px;
   height: 30px;
+  font-size: 25px;
   border-radius: 15px;
-  text-align: center
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.task_discrible{
-  height:50%;
+
+.task_discrible {
+  height: 50%;
   text-align: left;
   padding: 10px;
   margin-top: 10px;
 }
+
 .cityheader {
   position: absolute;
-  top:0px;
+  top: 0px;
   width: 100%;
   z-index: 4;
 }
-.citypickers{
+
+.citypickers {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -108,7 +130,7 @@
 
 .cityheader {
   position: absolute;
-  top:0px;
+  top: 0px;
   width: 100%;
   z-index: 10;
   opacity: 1;
@@ -123,14 +145,14 @@
 .city-true {
   float: right;
   margin: 20rpx;
-  color: #2FB42E
+  color: #2fb42e;
 }
 
 .section .picker {
   background-color: #fff;
   border-bottom: 1px #d9d9d9 solid;
   border-top: 1px #d9d9d9 solid;
-   padding: 20rpx; 
+  padding: 20rpx;
 }
 
 /* 支付密码框 */
@@ -140,23 +162,22 @@
   display: flex;
   flex-direction: row;
   border: 1px solid #cfd4d3; */
-
-
-    width: 80%;
+  width: 80%;
   height: 27px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   border: 1px solid #cfd4d3;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
-.boder{
+
+.boder {
   border: 1px solid #cfd4d3;
 }
 
 .week {
-  width: 12%;
+  width: 16%;
 }
 
 .week_data {
@@ -167,5 +188,12 @@
   flex-direction: row;
   border: 1px solid #cfd4d3;
   justify-content: center;
-  align-items: center
+  align-items: center;
+}
+
+.show{
+  display: ""
+}
+.dismiss{
+  display: none
 }

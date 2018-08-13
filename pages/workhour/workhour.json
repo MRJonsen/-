@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "zan-button": "../../ui/zanui/btn/index",
     "zan-cell": "../../ui/zanui/cell/index",
     "zan-icon": "../../ui/zanui/icon/index",
     "zan-badge": "../../ui/zanui/badge/index",

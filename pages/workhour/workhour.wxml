@@ -1,0 +1,129 @@
+<!--pages/workhour/workhour.wxml-->
+<view>
+<scroll-view id="s_page" class='page'>
+  <zan-cell-group>
+    <view style='display:flex; flex-direction: row;'>
+      <view style='width:50%'>
+        <zan-cell title="年份" is-link>
+          <picker slot="footer" class='picker half_window_2' bindchange='bindYearPickerChange' value="{{workhour.YearIndex}}" range="{{YearData}}" range-key='PERIODCODE' name='PERIODYEAR'> {{YearData[workhour.YearIndex].PERIODCODE}}</picker>
+        </zan-cell>
+      </view>
+      <view style='width:50%'>
+        <zan-cell title="周次" is-link>
+          <picker slot="footer" class='picker half_window_2' bindchange='bindWeekPickerChange' value="{{workhour.WeekTimeIndex}}" range="{{WeekData}}" name='PERIODWEEK'>{{WeekData[workhour.WeekTimeIndex]}}</picker>
+        </zan-cell>
+      </view>
+    </view>
+    <zan-cell title="时间">
+      <view style='display:flex; flex-direction: row;' slot="footer">
+        <view>{{workhour.WEEK_BEGINDATE}}至{{workhour.WEEK_ENDDATE}}</view>
+      </view>
+    </zan-cell>
+  </zan-cell-group>
+
+  <view class="list_content">
+    <!-- 工时列表  -->
+    <view class='list' wx:for="{{list}}" wx:key="{{id}}" wx:for-item='workhour' wx:for-index="id">
+      <view class='del' bindtap='delItem' id='{{id}}'><image class='del-img' src='../../images/del_work_item.png' mode='scaleToFill'></image></view>
+      <view class="list_tem">
+        <zan-cell-group>
+          <zan-cell title="项目名称" is-link>
+            <view class=' text_s  half_window' slot="footer" bindtap='openThree' data-index='{{id}}'>
+              <view id='{{id}}' wx:if="{{list[id].PROJECT_NAME==null}}">请选择</view>
+              <view data-index='{{id}}' wx:else>
+               {{list[id].PROJECT_NAME}}
+              </view>
+            </view>
+          </zan-cell>
+          <zan-cell title="工作任务" is-link>
+            <view class='text_s half_window' slot="footer" bindtap='openThree' id='{{id}}'>
+              <view id='{{id}}' wx:if="{{list[id].TASKPKG_NAME==null}}">请选择</view>
+              <view id='{{id}}' wx:else>
+              {{list[id].TASKPKG_NAME}}
+                </view>
+            </view>
+          </zan-cell>
+          <zan-cell title="任务名称">
+            <view slot="footer" style='width: 450rpx;'>
+              <input class='.text_s' bindinput='taskNameInput' placeholder="任务说明" id="{{id}}" value="{{list[id].TASK_NAME}}"></input>
+            </view>
+          </zan-cell>
+          <zan-cell title="完成情况" is-link>
+            <picker class='picker half_window .text_s'  slot="footer" value='{{workhour.TASK_STATUS}}' id="{{id}}" bindchange='bindTaskStatusChange' range="{{taskstatus}}">{{taskstatus[list[id].TASK_STATUS]}}</picker>
+          </zan-cell>
+        </zan-cell-group>
+
+        <zan-panel>
+          <view style='margin:5px'>
+            <view style='display:flex;width:100%;text-align: center;'>
+              <view class="week">
+                <view>星期</view>
+                <view></view>
+              </view>
+              <view class="week {{ input[1]?'dismiss': 'show' }}">
+                <view>一</view>
+                <input class="week_data" type="digit" placeholder='0' disabled="{{ input[1] }}" value="{{workhour.MON_HOUR}}" bindinput='dayInput' data-name='MON_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[2]?'dismiss': 'show' }}">
+                <view>二</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[2] }}" value="{{workhour.TUE_HOUR}}" bindinput='dayInput' data-name='TUE_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[3]?'dismiss': 'show' }}">
+                <view>三</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[3] }}" value="{{workhour.WED_HOUR}}" bindinput='dayInput' data-name='WED_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[4]?'dismiss': 'show' }}">
+                <view>四</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[4] }}" value="{{workhour.THU_HOUR}}" bindinput='dayInput' data-name='THU_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[5]?'dismiss': 'show' }}">
+                <view>五</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[5] }}" value="{{workhour.FRI_HOUR}}" bindinput='dayInput' data-name='FRI_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[6]?'dismiss': 'show' }}">
+                <view>六</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[6] }}" value="{{workhour.SAT_HOUR}}" bindinput='dayInput' data-name='SAT_HOUR' id="{{id}}"></input>
+              </view>
+              <view class="week {{ input[0]?'dismiss': 'show' }}">
+                <view>日</view>
+                <input class="week_data " type="digit" placeholder='0' disabled="{{ input[0] }}" value="{{workhour.SUN_HOUR}}" bindinput='dayInput' data-name='SUN_HOUR' id="{{id}}"></input>
+              </view>
+            </view>
+          </view>
+        </zan-panel>
+      </view>
+    </view>
+  </view>
+  <!--三级选择-->
+  <view class="citypicker" wx:if='{{condition}}'>
+    <picker-view class='citybody' indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindTreeChange" wx:key="*this">
+      <view class="cityheader">
+        <view bindtap="closeThree" class="city-cancel">取消</view>
+        <view bindtap="saveThree" class="city-true">确定</view>
+      </view>
+      <picker-view-column>
+        <view wx:for="{{taskData}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.PROJECT_NAME}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{taskData[taskIndex[0]].phaseEntities}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.PHASE_NAME}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{taskData[taskIndex[0]].phaseEntities[taskIndex[1]].projectTaskEntities}}" wx:for-index='idx' wx:for-item='item' style="line-height: 50px;padding-left:10px;">{{item.TASKPKG_NAME}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</scroll-view>
+<view class='share-btn' wx:if="{{workhour.STATUS==0||workhour.STATUS==4}}">
+    <view bindtap='addItem'>
+      <image class=' share-btn-img' src='../../images/add_work_item.png' mode='scaleToFill'></image>
+    </view>
+  </view>
+  <view class='bottom_view' wx:if="{{workhour.STATUS==0||workhour.STATUS==4}}">
+    <view class='width_half'>
+      <zan-button  bind:btnclick='commitWorkData' id='commit'> 提交</zan-button>
+    </view>
+    <view class='width_half'>
+      <zan-button type="primary2" bind:btnclick='commitWorkData' id='save'>保存</zan-button>
+    </view>
+  </view>
+</view>

@@ -8,12 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    share_btn: { imgUrl: '../../images/manhour_icon.png', zhName: '工时填报', url: "../workhour/workhour" },
     delBtnWidth: 180,//删除按钮宽度单位（rpx）
     hasMore: true,
     work_time_list: [
 
     ],
-    color: ['#B0C4DE', "#DDA0DD","#EEAD0E"],
+    color: ['#B0C4DE', "#DDA0DD", "#EEAD0E"],
     start_index: 0
   },
 
@@ -26,7 +27,7 @@ Page({
     });
     this.manHourDatas();
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -38,7 +39,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.worklistneedrefresh){
+       this.manHourDatas(true);
+       app.globalData.worklistneedrefresh=false;
+    }
   },
 
   /**
@@ -97,30 +101,31 @@ Page({
     // console.log(e.currentTarget.dataset.item);
     var data = JSON.stringify(e.currentTarget.dataset.item);
     wx.navigateTo({
-      url: '../manhourdetail/manhourdetail?manhour='+data,
+      // url: '../manhourdetail/manhourdetail?manhour=' + data,
+      url: '../workhour/workhour?manhour=' + data,
     })
   },
   statusOperation: function (e) {
     var e = e;
     var that = this;
-    if (e.currentTarget.dataset.manhour.STATUS != 0) {
-      return
+    if (e.currentTarget.dataset.manhour.STATUS == 0 || e.currentTarget.dataset.manhour.STATUS == 4) {
+      wx.showActionSheet({
+        itemList: ['提交', '删除'],
+        success: function (res) {
+          console.log(res.tapIndex)
+          if (res.tapIndex == 1) {
+            that.deleteManHour(e);
+          }
+          if (res.tapIndex == 0) {
+            that.commitManHour(e);
+          }
+        },
+        fail: function (res) {
+          console.log(res.errMsg)
+        }
+      })
     }
-    wx.showActionSheet({
-      itemList: ['删除', '提交'],
-      success: function (res) {
-        console.log(res.tapIndex)
-        if (res.tapIndex == 0) {
-          that.deleteManHour(e);
-        }
-        if (res.tapIndex == 1) {
-          that.commitManHour(e);
-        }
-      },
-      fail: function (res) {
-        console.log(res.errMsg)
-      }
-    })
+
   },
   deleteManHour: function (e) {//删除工时
     console.log(e.currentTarget.dataset.index);
@@ -159,7 +164,7 @@ Page({
           work_time_list: list
         })
       }
-    }) 
+    })
   },
   commitManHour: function (e) {//提交工时
     // console.log(e.currentTarget.dataset.index);
@@ -170,7 +175,7 @@ Page({
     var dataMap = new Map();
     var datas = new Map();
     datas["TSRPT_ID"] = e.currentTarget.dataset.manhour.TSRPT_ID;
-    datas["STATUS"] =  1;
+    datas["STATUS"] = 1;
     dataMap["ZCCM_PJ_TS_REPORTING"] = datas;
 
     // var dataMap1 = new Map();
@@ -207,7 +212,7 @@ Page({
           work_time_list: list
         })
       }
-    }) 
+    })
   },
   manHourDatas: function (isfresh) {//获取工时数据
     var that = this;
@@ -216,9 +221,9 @@ Page({
       that.setData({
         star_index: 0
       })
-      index = 0 ;
+      index = 0;
     }
-    
+
     var dataList = new Array();
     var parametersMap = new Map();
     var commandMap = new Map();
@@ -250,9 +255,12 @@ Page({
         var datas = that.data.work_time_list;
         var index = that.data.start_index;
         console.log(res)
-        for(var j=0;j<res.length;j++){//处理时间格式
-          res[j].WEEK_BEGINDATE = stringutil.dateFtt("yyyy-MM-dd", new Date(res[j].WEEK_BEGINDATE));
-          res[j].WEEK_ENDDATE = stringutil.dateFtt("yyyy-MM-dd", new Date(res[j].WEEK_ENDDATE));
+        for (var j = 0; j < res.length; j++) {//处理时间格式
+        //调用方法处理ios 有new Date("2017-04-28 23:59:59")需要换成new Date("2017/04/28 23:59:59")
+          // res[j].WEEK_BEGINDATE = stringutil.dateFtt("yyyy-MM-dd", new Date(res[j].WEEK_BEGINDATE));
+          // res[j].WEEK_ENDDATE = stringutil.dateFtt("yyyy-MM-dd", new Date(res[j].WEEK_ENDDATE));
+          res[j].WEEK_BEGINDATE = res[j].WEEK_BEGINDATE.substr(0, 10);
+          res[j].WEEK_ENDDATE = res[j].WEEK_ENDDATE.substr(0, 10);
         }
         if (isfresh) {
           datas = res;

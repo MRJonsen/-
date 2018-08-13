@@ -1,7 +1,9 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
- 
-</view>
+<block wx:for="{{lists}}" wx:key="{{index}}">
+  <view data-id='{{index}}'>
+    <input class='create-li' data-id="{{index}}"  id = '{{index}}'placeholder="选项" bindinput='bindKeyInput'></input>
+    <input class='create-li' data-id="{{index}}" id = '{{index}}'  placeholder="选项" bindinput='bindKeyInput2'></input>
+    <text></text>
+  </view>
+</block>
+<button class='add-li' bindtap='addList'>添加选项</button>
+<button class='add-li' bindtap='delList'>删除选项</button>

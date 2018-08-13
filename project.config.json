@@ -8,8 +8,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
-	"appid": "wx4810e3f7ce0b8f56",
+	"libVersion": "1.9.90",
+	"appid": "wx21f18cf83b68162b",
 	"projectname": "zccmp",
 	"condition": {
 		"search": {
@@ -20,9 +20,24 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
 			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "更新",
+					"pathName": "pages/login/login",
+					"query": ""
+				}
+			]
 		}
 	}
 }

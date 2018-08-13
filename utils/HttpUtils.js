@@ -19,6 +19,7 @@ function post(param) {
   mydata = param.data || {};
   wx.request({
     url: "https://www.hzzcdz.com/zccmp/"+ param.url,
+    // url:"http://192.168.0.106:8080/zccmp/"+param.url,
     // url: "http://192.168.10.114:8080/zccmp/"+ param.url,
     // url: "http://192.168.0.104:8080/zccmp/" + param.url,
       // baseurl: "http://192.168.0.103:8090/api/"
@@ -38,10 +39,17 @@ function post(param) {
           if (res.header["Set-Cookie"]!=null){
             getApp().globalData.cookie = res.header["Set-Cookie"]//持久cookie
           }
-          if (res.data.RETMSG == "null" || res.data.RETMSG == '操作成功！') {
+          if (res.data.RETMSG == "null" || res.data.RETMSG == '操作成功！' ) {
             wx.hideLoading();
-            
-            param.success(stringutil.responseToDatas(res,''));
+            if (res.data.EXCEPTIONDATA.length == 0){
+              param.success(stringutil.responseToDatas(res, ''));
+            }else{
+              console.log("------失败--------")
+              if (param.fail) {
+                param.fail(res);
+              }
+            }
+          
           } else {
             console.log("------失败--------")
             uiutil.Toast(res.data.RETMSG)
@@ -64,7 +72,7 @@ function post(param) {
       }
     },
     fail: function (res) {
-      uiutil.Toast('请求错误')
+      uiutil.Toast('操作失败！')
       if (param.fail) {
         param.fail(res);
       }
